@@ -3,7 +3,7 @@
 #include <gl/glu.h>
 #include <gl/glut.h>
 
-//Ğ¡·½¿éµÄ½á¹¹£¬°üÀ¨Ğ¡·½¿éÔÚx,y,zÉÏµÄĞı×ª½Ç¶È£¬ÑÕÉ«Êı×éÏÂ±ê£¬Ğ¡·½¿éµÄÈıÎ¬×ø±ê¡£
+//å°æ–¹å—çš„ç»“æ„ï¼ŒåŒ…æ‹¬å°æ–¹å—åœ¨x,y,zä¸Šçš„æ—‹è½¬è§’åº¦ï¼Œé¢œè‰²æ•°ç»„ä¸‹æ ‡ï¼Œå°æ–¹å—çš„ä¸‰ç»´åæ ‡ã€‚
 
 struct rcube{
 int xr;
@@ -16,11 +16,11 @@ GLfloat z;
 };
 struct rcube rc[3][3][3];
 struct rcube *temp[3][3];
-//ÑÕÉ«Êı×é
+//é¢œè‰²æ•°ç»„
 GLfloat color[6][3]={{1.0,0.0,0.0},{0.0,1.0,0.0},{0.0,0.0,1.0},
 {1.0,1.0,0.0},{1.0,0.0,1.0},{0.0,1.0,1.0}};
 int tempc[3][3][6];
-//ÓĞ¹ØĞı×ªµÄÒ»Ğ©±äÁ¿
+//æœ‰å…³æ—‹è½¬çš„ä¸€äº›å˜é‡
 GLfloat xRot = 10.0f;
 GLfloat yRot = 10.0f;
 int rotateType=0;
@@ -28,45 +28,45 @@ int rotateOK=0;
 int rotateRate=50;
 int rotate=0;
 ///////////////////////////////////////////////////////////////////////////////
-//»­Ğ¡·½¿é
+//ç”»å°æ–¹å—
 void drawcube(int cl[6])
 {   
 glBegin(GL_QUADS);
-//ÓÒÃæ
+//å³é¢
 glColor3fv(color[cl[0]]);
 glVertex3f(0.14f,-0.14f,-0.14f);
 glVertex3f(0.14f,0.14f,-0.14f);
 glVertex3f(0.14f,0.14f,0.14f);
 glVertex3f(0.14f,-0.14f,0.14f);
 
-//×óÃæ
+//å·¦é¢
 glColor3fv(color[cl[1]]);
 
 glVertex3f(-0.14f,-0.14f,0.14f);
 glVertex3f(-0.14f,0.14f,0.14f);
 glVertex3f(-0.14f,0.14f,-0.14f);
 glVertex3f(-0.14f,-0.14f,-0.14f);
-//Ç°Ãæ
+//å‰é¢
 glColor3fv(color[cl[2]]);
 glVertex3f(-0.14f,0.14f,0.14f);
 glVertex3f(-0.14f,-0.14f,0.14f);
 glVertex3f(0.14f,-0.14f,0.14f);
 glVertex3f(0.14f,0.14f,0.14f);
-//ºóÃæ
+//åé¢
 glColor3fv(color[cl[3]]);
 glVertex3f(-0.14f,0.14f,-0.14f);
 glVertex3f(0.14f,0.14f,-0.14f);
 glVertex3f(0.14f,-0.14f,-0.14f);
 glVertex3f(-0.14f,-0.14f,-0.14f);
 
-//ÉÏÃæ
+//ä¸Šé¢
 
 glColor3fv(color[cl[4]]);
 glVertex3f(-0.14f,0.14f,-0.14f);
 glVertex3f(-0.14f,0.14f,0.14f);   
 glVertex3f(0.14f,0.14f,0.14f);
 glVertex3f(0.14f,0.14f,-0.14f);
-//ÏÂÃæ
+//ä¸‹é¢
 glColor3fv(color[cl[5]]);
 glVertex3f(-0.14f,-0.14f,-0.14f);
 glVertex3f(0.14f,-0.14f,-0.14f);
@@ -75,7 +75,7 @@ glVertex3f(-0.14f,-0.14f,0.14f);
 glEnd();
 glFlush();
 }   
-//´°¿ÚË¢ĞÂÊ±±»µ÷ÓÃ¡£
+//çª—å£åˆ·æ–°æ—¶è¢«è°ƒç”¨ã€‚
 void RenderScene(void)
 {
 int i,j,k;
@@ -92,7 +92,7 @@ for(j=0;j<3;j++)
 for(k=0;k<3;k++)
 
 {
-//Ä§·½ÔÚÕâÏÔÊ¾
+//é­”æ–¹åœ¨è¿™æ˜¾ç¤º
 
 glPushMatrix();     
 
@@ -120,7 +120,7 @@ glutSwapBuffers();
 
 }
 
-//³õÊ¼»¯¡£
+//åˆå§‹åŒ–ã€‚
 
 void SetupRC()
 
@@ -170,7 +170,7 @@ glEnable(GL_CULL_FACE);
 
 }
 
-//Ñ¡Ôñ×ª¶¯µÄÄÇÒ»×éĞ¡·½¿é¡£
+//é€‰æ‹©è½¬åŠ¨çš„é‚£ä¸€ç»„å°æ–¹å—ã€‚
 
 void elect(int type)
 
@@ -234,7 +234,7 @@ temp[i][j]=&rc[i][j][2]; break;
 
 }
 
-//ÅĞ¶ÏÊÇ·ñÊ¤Àû¡£
+//åˆ¤æ–­æ˜¯å¦èƒœåˆ©ã€‚
 
 int win(void)
 
@@ -282,7 +282,7 @@ return 1;
 
 }   
 
-//×ª¶¯Ğ¡·½¿é£¬Êµ¼ÊÉÏÊÇ½»»»ÑÕÉ«¡£
+//è½¬åŠ¨å°æ–¹å—ï¼Œå®é™…ä¸Šæ˜¯äº¤æ¢é¢œè‰²ã€‚
 
 void shift(void)
 
@@ -386,7 +386,7 @@ for(k=0;k<6;k++)
 
 }
 
-//Èç¹ûÍê³É½«±³¾°É«Éè³ÉºÚÉ«£¬·ñÔòÉè³É»ÒÉ«¡£
+//å¦‚æœå®Œæˆå°†èƒŒæ™¯è‰²è®¾æˆé»‘è‰²ï¼Œå¦åˆ™è®¾æˆç°è‰²ã€‚
 
 if(win()==1)
 
@@ -398,7 +398,7 @@ glClearColor(0.5f, 0.5f, 0.5f, 1.0f );
 
 }   
 
-//×ª¶¯Ä§·½£¬Ò²¾ÍÊÇ¸Ä±äĞ¡·½¿éÔÚx,y,zÉÏµÄĞı×ª½Ç¶È¡£
+//è½¬åŠ¨é­”æ–¹ï¼Œä¹Ÿå°±æ˜¯æ”¹å˜å°æ–¹å—åœ¨x,y,zä¸Šçš„æ—‹è½¬è§’åº¦ã€‚
 
 void turn (void)
 
@@ -434,7 +434,7 @@ if(rotateType>6&&rotateType<=9)
 
 } 
 
-//¶¨Ê±Æ÷»Øµ÷º¯Êı£¬µ±Ä§·½×ª¶¯Ê±²úÉú¶¯»­¡£
+//å®šæ—¶å™¨å›è°ƒå‡½æ•°ï¼Œå½“é­”æ–¹è½¬åŠ¨æ—¶äº§ç”ŸåŠ¨ç”»ã€‚
 
 void TimerFunc(int value)
 
@@ -466,7 +466,7 @@ glutTimerFunc(rotateRate,TimerFunc,1);
 
 }
 
-//½ÓÊÕ¼üÅÌÊäÈë¡£
+//æ¥æ”¶é”®ç›˜è¾“å…¥ã€‚
 
 void SpecialKeys(int key, int x, int y)
 
@@ -558,7 +558,7 @@ glutPostRedisplay();
 
 }
 
-//µ±´°¿Ú¸Ä±ä³ß´çÊ±±»µ÷ÓÃ¡£
+//å½“çª—å£æ”¹å˜å°ºå¯¸æ—¶è¢«è°ƒç”¨ã€‚
 
 void ChangeSize(int w, int h)
 
@@ -590,7 +590,7 @@ glLoadIdentity();
 
 }
 
-//Ö÷º¯Êı¡£
+//ä¸»å‡½æ•°ã€‚
 
 int main(int argc, char* argv[])
 
